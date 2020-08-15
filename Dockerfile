@@ -1,5 +1,5 @@
 FROM ekidd/rust-musl-builder AS builder
-RUN git clone --depth 1 https://github.com/iovxw/rssbot.git .
+RUN git clone -b 2.x --depth 1 https://github.com/iovxw/rssbot.git .
 RUN sudo chown -R rust:rust /home/rust
 RUN rustup target add x86_64-unknown-linux-musl
 RUN cargo build --release
