@@ -1,6 +1,7 @@
 FROM rust:alpine AS builder
 RUN apk update && \
     apk add cargo rustup git && \
+    cd /home && \
     git clone -b 2.x --depth 1 https://github.com/iovxw/rssbot.git && \
     cd rssbot && \
     rustup install nightly && \
@@ -9,7 +10,7 @@ RUN apk update && \
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 COPY --from=builder \
-    /home/rust/src/target/x86_64-unknown-linux-musl/release/rssbot \
+    /home/rssbot/src/target/x86_64-unknown-linux-musl/release/rssbot \
     /usr/local/bin/
 ENV DATAFILE="/rustrssbot/rssdata.json"
 ENV TELEGRAM_BOT_TOKEN=""
