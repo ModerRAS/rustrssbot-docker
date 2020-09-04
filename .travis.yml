@@ -7,5 +7,5 @@ script:
   - docker build -t moderras/rssbot:nightly-$(date +%F) -f ./Dockerfile .
   - docker build -t moderras/rssbot:latest -f ./Dockerfile .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push moderras/rssbot:$(date +%F)
+  - docker push moderras/rssbot:nightly-$(date +%F)
   - docker push moderras/rssbot:latest
