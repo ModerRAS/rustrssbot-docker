@@ -1,4 +1,4 @@
-FROM alpine:latest AS builder
+FROM rust:alpine AS builder
 RUN apk update && \
     apk add cargo rustup git && \
     git clone -b 2.x --depth 1 https://github.com/iovxw/rssbot.git && \
