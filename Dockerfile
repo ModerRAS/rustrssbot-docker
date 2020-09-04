@@ -10,7 +10,7 @@ RUN apk update && \
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 COPY --from=builder \
-    /home/rssbot/src/target/x86_64-unknown-linux-musl/release/rssbot \
+    /home/rssbot/target/x86_64-unknown-linux-musl/release/rssbot \
     /usr/local/bin/
 ENV DATAFILE="/rustrssbot/rssdata.json"
 ENV TELEGRAM_BOT_TOKEN=""
