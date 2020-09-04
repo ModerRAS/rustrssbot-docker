@@ -6,7 +6,7 @@ RUN apk update && \
     cd rssbot && \
     rustup install nightly && \
     rustup target add x86_64-unknown-linux-musl && \
-    cargo +nightly build --release
+    cargo +nightly build --release --target=x86_64-unknown-linux-musl
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 COPY --from=builder \
